@@ -3,6 +3,9 @@
 ##Plan
 | Steps   |      Status      |
 |----------|:-------------:|
-| Standford MachineLearning |  Done |
-| col 2 is |    centered   |
-| col 3 is | right-aligned | 
+| Standford MachineLearning course in Youtube |  Done |
+| Introduction to Data Science in Python Coursera |    Done   |
+| Applied Machine Learning in Python Coursera | Done | 
+| Python learning while implementing most common ML models | InProgress |
+| Convolutional Neural Networks | ToDo |
+| Practical Deep Learning course from fast.ai | ToDo |
