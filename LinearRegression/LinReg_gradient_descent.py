@@ -20,11 +20,6 @@ class LinearRegressionGD:
             y_pred = self.predict(X)
 
             dw = (1 / n_s) * (np.dot(X.T, (y_pred - y)))
-
-            # regularization did not help much so commented out. but maybe because there was no overfit
-            #dw = (1 / n_s) * (np.dot(X.T, (y_pred - y)) + self.penalty * self.weights) <- ridge reg
-            #dw = self.__apply_lasso_regularization(dw) <- lasso
-            
             db = (1 / n_s) * np.sum(y_pred - y)
 
             self.weights -= self.l * dw
@@ -32,12 +27,3 @@ class LinearRegressionGD:
 
     def predict(self, X):
         return self.bias + np.dot(X, self.weights)
-    
-    def __apply_lasso_regularization(self, dw):
-        for j in range( self.n ) : 
-            if self.weights[j] > 0 : 
-                dw[j] -= self.penalty / self.m 
-            else :  
-                dw[j] += self.penalty / self.m 
-
-        return dw
