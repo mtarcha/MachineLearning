@@ -7,7 +7,7 @@ class LogisticRegression:
     """
 
     def __init__(self, lr=0.001, iterations=1000):
-        self.lt = lr
+        self.lr = lr
         self.iterations = iterations
         self.weights = None
         self.bias = None
@@ -19,20 +19,20 @@ class LogisticRegression:
 
         # gradient descent
         for i in range(self.iterations):
-            y_pred = self._predict(X)
-            dw = np.dot(X.T, (y_pred - y)) / m_s
-            db = np.sum(y_pred - y) / m_s
+            y_pred = self.predict_probability(X)
+            dw = np.dot(X.T, (y_pred - y))
+            db = np.sum(y_pred - y)
 
             self.weights -= self.lr * dw
             self.bias -= self.lr * db
 
     def predict(self, X):
-        y_pred = self._predict(X)
-        y_pred_cls = [1 if i > 0.5 else 0 for i in y_pred]
+        y_pred = self.predict_probability(X)
+        y_pred_cls = [1 if i >= 0.5 else 0 for i in y_pred]
         return y_pred_cls
     
     
-    def _predict(self, X):
+    def predict_probability(self, X):
         lin_model = np.dot(X, self.weights) + self.bias
         y_pred = self._sigmoid(lin_model)
         return y_pred
